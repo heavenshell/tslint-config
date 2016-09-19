@@ -1,8 +1,8 @@
-import * as TSLint from 'tslint'
-import { LintResult } from 'tslint/lib/lint'
 import fs = require('fs')
 import path = require('path')
 import assert = require('assert')
+import * as TSLint from 'tslint'
+import { LintResult } from 'tslint/lib/lint'
 
 function lint(fileName: string): LintResult {
   const configFile = fs.readFileSync(path.resolve(__dirname, '../tslint.json'), 'utf8')
