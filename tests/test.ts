@@ -1,17 +1,16 @@
 import fs = require('fs')
 import path = require('path')
 import assert = require('assert')
-import * as TSLint from 'tslint'
-import { LintResult } from 'tslint/lib/lint'
+import { Linter, LintResult } from 'tslint/lib/'
+import { loadConfigurationFromPath } from 'tslint/lib/configuration'
 
 function lint(fileName: string): LintResult {
-  const configFile = fs.readFileSync(path.resolve(__dirname, '../tslint.json'), 'utf8')
-  let options = JSON.parse(configFile.toString())
-  options['configuration'] = TSLint.loadConfigurationFromPath(path.resolve(__dirname, '../tslint.json'))
+  const configFile = loadConfigurationFromPath(path.resolve(__dirname, '../tslint.json'))
 
   const code = fs.readFileSync(path.resolve(__dirname, fileName), 'utf-8')
-  const linter = new TSLint(fileName, code, options)
-  const result = linter.lint()
+  const linter = new Linter({fix: false})
+  linter.lint(fileName, code, configFile)
+  const result = linter.getResult()
 
   return result
 }
