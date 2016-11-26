@@ -7,9 +7,12 @@
     "test": "tests"
   },
   "scripts": {
+    "build": "tsc",
+    "pretest": "npm run build && npm run test:lint",
     "test": "npm run test:lint && npm run test:unit",
     "test:lint": "tslint -c tslint.json tests/*.ts",
     "test:unit": "tsc tests/test.ts && node tests/test.js"
+
   },
   "repository": {
     "type": "git",
@@ -26,12 +29,12 @@
   },
   "homepage": "https://github.com/heavenshell/tslint-config#readme",
   "devDependencies": {
-    "@types/node": "^6.0.45",
+    "@types/node": "^6.0.51",
     "greenkeeper-postpublish": "^1.0.1",
-    "tslint": "^4.0.0",
-    "typescript": "^2.0.3"
+    "tslint": "^4.0.2",
+    "typescript": "^2.0.10"
   },
   "dependencies": {
-    "tslint-config-standard": "^1.5.0"
+    "tslint-config-standard": "^2.0.0"
   }
 }
