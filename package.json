@@ -35,6 +35,6 @@
     "typescript": "^2.1.4"
   },
   "dependencies": {
-    "tslint-config-standard": "^3.0.0"
+    "tslint-config-standard": "^5.0.0"
   }
 }
